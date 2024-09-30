@@ -1,0 +1,66 @@
+@page
+@model MigrationTester.Pages.Results.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Test results</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].Gcc.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].ModifiedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].Comments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].Tester)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].TestStatus)
+            </th>
+            <th>
+                Test
+            </th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Result) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gcc.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tester)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TestStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Test.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ResultId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ResultId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ResultId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

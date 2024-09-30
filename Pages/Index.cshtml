@@ -1,0 +1,45 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                GCC
+            </th>
+            <th>Tests</th>
+            <th>Pending</th>
+            <th>Completed</th>
+            <th>Failed</th>
+            <th>Percentage completed</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Statuses)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GccName)
+                </td>
+                <td>
+                    <a asp-page="/GccDetails" asp-route-gcc="@item.GccId" asp-route-type="total">@Html.DisplayFor(modelItem => item.TotalTests)</a>
+                </td>
+                <td>
+                    <a asp-page="/GccDetails" asp-route-gcc="@item.GccId" asp-route-type="pending">@Html.DisplayFor(modelItem => item.PendingTests)</a>
+                </td>
+                <td>
+                    <a asp-page="/GccDetails" asp-route-gcc="@item.GccId" asp-route-type="completed">@Html.DisplayFor(modelItem => item.CompletedTests)</a>
+                </td>
+                <td>
+                    <a asp-page="/GccDetails" asp-route-gcc="@item.GccId" asp-route-type="failed">@Html.DisplayFor(modelItem => item.Failedtests)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompletitionPercentage)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

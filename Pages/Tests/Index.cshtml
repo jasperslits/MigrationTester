@@ -1,0 +1,55 @@
+@page "{categoryId:int?}"
+@model MigrationTester.Pages.Tests.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Test overview</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Process
+            </th>
+            <th>
+               Procedure
+            </th>
+            <th>
+               Task
+            </th>
+            <th>
+                Action
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Test) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Procedure.Category.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Procedure.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Action)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.TestId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.TestId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TestId">Delete</a>|
+                <a asp-page="/RoleTest/Create" asp-route-id="@item.TestId">Roles</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

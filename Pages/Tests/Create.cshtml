@@ -1,0 +1,53 @@
+@page
+@model MigrationTester.Pages.Tests.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create new test</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+              <div class="form-group">
+                <label asp-for="Test.ProcedureId" class="control-label"></label>
+                <select asp-for="Test.ProcedureId" class ="form-control" asp-items="ViewBag.ProcedureId"></select>
+            </div>
+              <div class="form-group">
+                <label asp-for="Test.GccId" class="control-label"></label>
+                <select asp-for="Test.GccId" class ="form-control" asp-items="ViewBag.Gcc"></select>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="Test.TaskName" class="control-label"></label>
+                <input asp-for="Test.TaskName" class="form-control" />
+                <span asp-validation-for="Test.TaskName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Test.Action" class="control-label"></label>
+                <input asp-for="Test.Action" class="form-control" />
+                <span asp-validation-for="Test.Action" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="Test.Name" class="control-label"></label>
+                <input asp-for="Test.Name" class="form-control"/>
+                <span asp-validation-for="Test.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-TaskName="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

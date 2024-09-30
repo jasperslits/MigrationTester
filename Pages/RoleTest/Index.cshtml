@@ -1,0 +1,42 @@
+@page
+@model MigrationTester.Pages.RoleTest.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Role
+            </th>
+            <th>
+                Test
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.TestRole) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Test.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.TestRoleId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.TestRoleId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TestRoleId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,41 @@
+@page "{id:int?}"
+@model MigrationTester.Pages.RoleTest.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Assign test to roles</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+       
+                 <div class="form-group">
+                <label class="control-label">Roles</label>
+                @for (int i = 0; i < Model.Roles.Count; i++) {
+                     <input name="AssignedRoles" type="checkbox" value="@Model.Roles[i].RoleId" /> @Model.Roles[i].Name<br/>
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="TestRole.TestId" class="control-label"></label>
+                <input asp-for="TestRole.TestId" class="form-control" />
+                <span asp-validation-for="TestRole.TestId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

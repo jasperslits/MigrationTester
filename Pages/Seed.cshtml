@@ -1,0 +1,15 @@
+﻿@page 
+@model SeedModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>Seeding</h1>
+
+<ol>
+@foreach(var sr in Model.SeedResults) {
+    <li>@sr.Key - @sr.Value</li>
+
+}
+
+</ol>
