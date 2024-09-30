@@ -20,5 +20,11 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.5" />
   </ItemGroup>
+  <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
+  <Copy SourceFiles="MigTester.db" DestinationFolder="$(OutDir)" />
+</Target>
+<Target Name="CopyCustomContentOnPublish" AfterTargets="Publish">
+  <Copy SourceFiles="MigTester.db" DestinationFolder="$(PublishDir)" />
+</Target>
 
 </Project>
