@@ -5,7 +5,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Roles and their tests</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -16,8 +16,14 @@
             <th>
                Role
             </th>
+               <th>
+                Procedure
+            </th>
             <th>
-                Test
+                Task
+            </th>
+              <th>
+                Action
             </th>
             <th></th>
         </tr>
@@ -28,12 +34,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Role.Name)
             </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.Test.Procedure.Name)
+            </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Test.Name)
+                @Html.DisplayFor(modelItem => item.Test.TaskName)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.Test.Action)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.TestRoleId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.TestRoleId">Details</a> |
+                <a asp-page="/Results/ByRole" asp-route-testid="@item.TestId" asp-route-roleid="@item.RoleId">Test results</a> |
                 <a asp-page="./Delete" asp-route-id="@item.TestRoleId">Delete</a>
             </td>
         </tr>

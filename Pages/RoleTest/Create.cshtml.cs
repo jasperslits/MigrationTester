@@ -22,9 +22,12 @@ namespace MigrationTester.Pages.RoleTest
         [BindProperty]
         public List<int> AssignedRoles { get; set; }
         public List<Role> Roles { get; set; }
+
+        public Test Test { get; set; }
         public IActionResult OnGet(int? id)
         {
             Roles = _context.Role.OrderBy(x => x.Name).ToList();
+            Test = _context.Test.Find(id);
 
             return Page();
         }

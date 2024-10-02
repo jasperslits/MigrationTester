@@ -62,6 +62,8 @@ public class Test {
     [Display(Name = "Category")]
     public int ProcedureId { get; set;}
     public Procedure Procedure { get; set; } 
+
+    public List<TestRole> TestRole { get; set; }
 }
 
 public class Result {
@@ -92,6 +94,8 @@ public class Result {
 
     [Display(Name = "Role")]
     public int RoleId { get; set; }
+
+    public Role Role{ get; set; }
 }
 
 public class Category {

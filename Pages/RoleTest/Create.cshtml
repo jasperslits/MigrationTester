@@ -5,26 +5,24 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Assign test to roles</h1>
+<h1>Assign roles to test</h1>
 
+@Model.Test.TaskName - @Model.Test.Action
 
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
+            <input type="hidden" asp-for="@Model.Test"/>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
        
                  <div class="form-group">
-                <label class="control-label">Roles</label>
+                <label class="control-label">Roles</label><br/>
                 @for (int i = 0; i < Model.Roles.Count; i++) {
                      <input name="AssignedRoles" type="checkbox" value="@Model.Roles[i].RoleId" /> @Model.Roles[i].Name<br/>
                 }
             </div>
-            <div class="form-group">
-                <label asp-for="TestRole.TestId" class="control-label"></label>
-                <input asp-for="TestRole.TestId" class="form-control" />
-                <span asp-validation-for="TestRole.TestId" class="text-danger"></span>
-            </div>
+         
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

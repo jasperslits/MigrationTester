@@ -35,7 +35,7 @@ public class GccDetailsModel : PageModel
   public void OnGet(int gcc,string type)
   {
       Gcc = _context.Gcc.Where(x => x.GccId == gcc).FirstOrDefault();
-      TestDetails  = _context.Result.Include(x => x.Test).ThenInclude(z => z.Procedure).ThenInclude(a => a.Category).Where(x => x.GccId == gcc).ToList();
+      TestDetails  = _context.Result.Include(x => x.Test).ThenInclude(z => z.Procedure).ThenInclude(a => a.Category).Include(x => x.Role).Where(x => x.GccId == gcc).ToList();
       if (type == "pending") {
         TestDetails = TestDetails.Where(x => x.TestStatus == (int)TestStatusType.New).ToList();
       } 

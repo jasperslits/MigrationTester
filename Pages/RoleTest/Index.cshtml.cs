@@ -23,7 +23,7 @@ namespace MigrationTester.Pages.RoleTest
 
         public async Task OnGetAsync()
         {
-            TestRole = await _context.TestRole.Include(x => x.Test).Include(x => x.Role).ToListAsync();
+            TestRole = await _context.TestRole.Include(x => x.Test).ThenInclude(x => x.Procedure).Include(x => x.Role).ToListAsync();
         }
     }
 }
